@@ -3,29 +3,33 @@ const products = [
     id: 'moonlit-shampoo',
     name: 'Moonlit Herb Shampoo',
     price: 16,
-    image:
-      'https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=900&q=80',
+    description: 'Gentle cleansing with rosemary and lavender.',
+    accent: 'moonlit',
+    glyph: '🧴',
   },
   {
     id: 'seasilk-conditioner',
     name: 'Sea Silk Conditioner',
     price: 18,
-    image:
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80',
+    description: 'Deep moisture with aloe and sea minerals.',
+    accent: 'sea',
+    glyph: '✨',
   },
   {
     id: 'ember-hair-oil',
     name: 'Ember Glow Hair Oil',
     price: 14,
-    image:
-      'https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?auto=format&fit=crop&w=900&q=80',
+    description: 'Lightweight shine blend for daily softness.',
+    accent: 'ember',
+    glyph: '🌿',
   },
   {
     id: 'rose-clay-mask',
     name: 'Rose Clay Scalp Mask',
     price: 20,
-    image:
-      'https://images.unsplash.com/photo-1607006483225-5af80f16f6e7?auto=format&fit=crop&w=900&q=80',
+    description: 'Weekly detox ritual for balanced scalp care.',
+    accent: 'rose',
+    glyph: '🌹',
   },
 ];
 
@@ -53,8 +57,11 @@ function renderProducts() {
     .map(
       (product) => `
       <article class="product-card">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <div class="product-image ${product.accent}" role="img" aria-label="${product.name}">
+          <span>${product.glyph}</span>
+        </div>
         <h3>${product.name}</h3>
+        <p class="description">${product.description}</p>
         <p class="price">${formatCurrency(product.price)}</p>
         <button data-id="${product.id}">Add to Cart</button>
       </article>
